@@ -99,8 +99,8 @@
 			children = (
 				08CE2BA72285BCC600183A1B /* LocalFeedImage.swift */,
 				08CE2BA52285BCB600183A1B /* FeedStore.swift */,
-				0DE7205D255E7FDC00887D18 /* CoreDataFeedStore.swift */,
 				0DE72072255E81CA00887D18 /* Model */,
+				0DE7205D255E7FDC00887D18 /* CoreDataFeedStore.swift */,
 				0DE72058255E770700887D18 /* CoreDataFeedStore.xcdatamodeld */,
 				08CE2B8F2285BBD100183A1B /* Info.plist */,
 			);
