@@ -5,37 +5,6 @@
 import XCTest
 import FeedStoreChallenge
 
-class CoreDataFeedStore: FeedStore {
-    func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-        
-    }
-    
-    func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-        
-    }
-    
-    func retrieve(completion: @escaping RetrievalCompletion) {
-        completion(.empty)
-    }
-}
-
-// MARK: - Core Data Models
- @objc(ManagedCache)
- private class ManagedCache: NSManagedObject {
-     @NSManaged var timestamp: Date
-     @NSManaged var feed: NSOrderedSet
- }
-
-
- @objc(ManagedFeedImage)
- private class ManagedFeedImage: NSManagedObject {
-     @NSManaged var id: UUID
-     @NSManaged var imageDescription: String?
-     @NSManaged var location: String?
-     @NSManaged var url: URL
-     @NSManaged var cache: ManagedCache
- }
-
 class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	
     //  ***********************
@@ -125,7 +94,8 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	// - MARK: Helpers
 	
 	private func makeSUT() -> FeedStore {
-		let sut = CoreDataFeedStore()
+        let bundleStore = Bundle(for: CoreDataFeedStore.self)
+		let sut = try! CoreDataFeedStore(bundle: bundleStore)
         return sut
 	}
 	
