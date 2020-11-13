@@ -22,6 +22,7 @@
 		0DE7205E255E7FDC00887D18 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7205D255E7FDC00887D18 /* CoreDataFeedStore.swift */; };
 		0DE72067255E809100887D18 /* CoreData+ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE72063255E808800887D18 /* CoreData+ManagedCache.swift */; };
 		0DE7206D255E812300887D18 /* CoreData+ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7206C255E812300887D18 /* CoreData+ManagedFeedImage.swift */; };
+		0DE7207B255EC56400887D18 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7207A255EC56400887D18 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		0DE7205D255E7FDC00887D18 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 		0DE72063255E808800887D18 /* CoreData+ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+ManagedCache.swift"; sourceTree = "<group>"; };
 		0DE7206C255E812300887D18 /* CoreData+ManagedFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+ManagedFeedImage.swift"; sourceTree = "<group>"; };
+		0DE7207A255EC56400887D18 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				08CE2BAE2285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift */,
 				08CE2BAD2285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */,
 				084BB13D24FE56830091C705 /* XCTestCase+FeedStoreHelpers.swift */,
+				0DE7207A255EC56400887D18 /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = FeedStoreSpecs;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				08CE2BB02285BCE700183A1B /* FeedStoreSpecs.swift in Sources */,
 				084BB13C24FE50A10091C705 /* FeedStoreIntegrationTests.swift in Sources */,
 				08CE2BB12285BCE700183A1B /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
+				0DE7207B255EC56400887D18 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				08CE2BAF2285BCE700183A1B /* XCTestCase+FeedStoreSpecs.swift in Sources */,
 				08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
 				084BB13E24FE56830091C705 /* XCTestCase+FeedStoreHelpers.swift in Sources */,
