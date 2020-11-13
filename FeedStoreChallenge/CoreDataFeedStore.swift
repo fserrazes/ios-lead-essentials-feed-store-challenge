@@ -16,26 +16,21 @@ public final class CoreDataFeedStore: FeedStore {
         context = persistentContainer.newBackgroundContext()
     }
     
+    private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
+        let context = self.context
+        context.perform { action(context) }
+    }
+    
     public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         
     }
     
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-        context.perform {
+        perform { context in
             do {
-                let cache = ManagedCache(context: self.context)
+                let cache = ManagedCache(context: context)
                 cache.timestamp = timestamp
-                
-                let images: [ManagedFeedImage] = feed.map {
-                    let imageFeed = ManagedFeedImage(context: self.context)
-                    imageFeed.id = $0.id
-                    imageFeed.imageDescription = $0.description
-                    imageFeed.url = $0.url
-                    imageFeed.location = $0.location
-                    return imageFeed
-                }
-                
-                cache.feed = NSOrderedSet(array: images)
+                cache.feed = ManagedFeedImage.images(from: feed, in: context)
                 
                 try self.context.save()
                 completion(nil)
@@ -46,15 +41,10 @@ public final class CoreDataFeedStore: FeedStore {
     }
     
     public func retrieve(completion: @escaping RetrievalCompletion) {
-        context.perform {
-            let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)
-            request.returnsObjectsAsFaults = false
-            
+        perform { context in
             do {
-                if let cache = try self.context.fetch(request).first {
-                    let feed = cache.feed.compactMap {($0 as? ManagedFeedImage)}.map {LocalFeedImage(id: $0.id, description: $0.imageDescription, location: $0.location, url: $0.url)}
-                    
-                    completion(.found(feed: feed, timestamp: cache.timestamp))
+                if let cache = try ManagedCache.find(in: context) {
+                    completion(.found(feed: cache.localFeed, timestamp: cache.timestamp))
                 } else {
                     completion(.empty)
                 }
